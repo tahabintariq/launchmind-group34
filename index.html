@@ -19,7 +19,7 @@
         }
         .hero h1 {
             font-size: 36px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         .features {
             display: flex;
@@ -33,7 +33,7 @@
             margin: 20px;
             border: 1px solid #ddd;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             width: calc(33.33% - 40px);
         }
         .feature h2 {
@@ -42,7 +42,7 @@
         }
         .feature p {
             font-size: 18px;
-            margin-bottom: 20px;
+            color: #666;
         }
         .footer {
             background-color: #4CAF50;
@@ -51,7 +51,7 @@
             text-align: center;
             clear: both;
         }
-        .btn {
+        .footer button {
             background-color: #fff;
             color: #4CAF50;
             border: none;
@@ -59,33 +59,39 @@
             font-size: 18px;
             cursor: pointer;
         }
-        .btn:hover {
-            background-color: #f7f7f7;
+        .footer button:hover {
+            background-color: #ccc;
         }
     </style>
 </head>
 <body>
     <div class="hero">
         <h1>GradTrack is an AI-powered job application tracker that helps final-year university students streamline their job search and increase their chances of landing their dream jobs.</h1>
-        <p>Discover how GradTrack can help you achieve your career goals</p>
+        <p>Discover how GradTrack can help you achieve your career goals.</p>
     </div>
     <div class="features">
         <div class="feature">
-            <h2>AI-powered job matching</h2>
+            <h2>AI-powered Job Matching</h2>
             <p>Our machine learning algorithms match you with job openings based on your skills, interests, and career goals, increasing your chances of landing a job that aligns with your aspirations.</p>
         </div>
         <div class="feature">
-            <h2>Job application tracker</h2>
-            <p>Stay organized and on top of your job applications with our tracker, which sends reminders for follow-ups and deadlines, ensuring you never miss an important opportunity.</p>
+            <h2>Job Application Tracker</h2>
+            <p>Stay organized and on top of your job applications with our tracker, which allows you to monitor the status of your applications and receive reminders for follow-ups and deadlines.</p>
         </div>
         <div class="feature">
-            <h2>Career counseling and feedback</h2>
-            <p>Receive personalized career guidance, resume and cover letter review, and interview preparation support to help you improve your job search skills and increase your chances of getting hired.</p>
+            <h2>Career Counseling and Feedback</h2>
+            <p>Get personalized career guidance, resume and cover letter review, and interview preparation support to help you improve your job search skills and increase your chances of getting hired.</p>
         </div>
     </div>
     <div class="footer">
-        <p>Ready to streamline your job search and land your dream job? Sign up for GradTrack today!</p>
-        <button class="btn">Get Started</button>
+        <button>Sign up for GradTrack today and start achieving your career goals!</button>
     </div>
+    <script>
+        // Add event listener to the sign up button
+        document.querySelector('.footer button').addEventListener('click', function() {
+            // Add functionality to handle sign up process
+            alert('Sign up process initiated. Please wait for further instructions.');
+        });
+    </script>
 </body>
 </html>
