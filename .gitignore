@@ -1,0 +1,16 @@
+.env
+keys.txt
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# Ignore assignment files and media
+launchmind.md
+launchmind_assignment.pdf
+*.mp4
+
+# Virtual Environments
+env/
+venv/
+.venv/

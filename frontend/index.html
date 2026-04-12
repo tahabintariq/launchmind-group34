@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LaunchMind Command Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/frontend/style.css" />
+</head>
+<body class="min-h-screen text-slate-100">
+  <div class="nebula-bg"></div>
+
+  <div class="mx-auto max-w-7xl px-4 pb-10 pt-6 md:px-6 lg:px-8">
+    <header class="glass-panel mb-5 rounded-2xl p-4 md:p-5">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div class="flex items-center gap-3">
+          <div class="logo-orb"></div>
+          <div>
+            <h1 class="text-xl font-semibold tracking-tight md:text-2xl">LaunchMind</h1>
+            <p class="text-xs text-slate-300 md:text-sm">Multi-Agent Startup Command Center</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 text-xs md:text-sm">
+          <span id="wsStatus" class="status-pill status-neutral">Connecting</span>
+          <span id="systemStatus" class="status-pill status-neutral">Idle</span>
+        </div>
+      </div>
+
+      <div class="mt-4 grid gap-3 lg:grid-cols-[1fr_auto]">
+        <label class="relative block">
+          <span class="mb-1 block text-xs text-slate-300">Startup Idea</span>
+          <input
+            id="ideaInput"
+            class="w-full rounded-xl border border-white/20 bg-slate-900/50 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-300/70 focus:ring-2 focus:ring-cyan-400/30"
+            type="text"
+            value="GradTrack - AI-powered job application tracker for final-year university students"
+          />
+        </label>
+        <div class="flex items-end">
+          <button
+            id="launchBtn"
+            class="w-full rounded-xl bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:bg-cyan-400/40 lg:w-auto"
+          >
+            Launch Run
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="glass-panel mb-5 rounded-2xl p-4 md:p-5">
+      <div class="mb-3 flex items-center justify-between gap-2">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-200 md:text-base">Phase Progress</h2>
+        <span id="phaseLabel" class="text-xs text-slate-300 md:text-sm">Waiting to start</span>
+      </div>
+      <div class="overflow-x-auto">
+        <div id="phaseTrack" class="phase-track min-w-[680px]"></div>
+      </div>
+    </section>
+
+    <section class="glass-panel mb-5 rounded-2xl p-4 md:p-5">
+      <div class="mb-3 flex items-center justify-between">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-200 md:text-base">Agent Pipeline</h2>
+        <span class="text-xs text-slate-300">Live status + latest action</span>
+      </div>
+      <div id="agentCards" class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4"></div>
+    </section>
+
+    <main class="grid gap-5 xl:grid-cols-[1.6fr_1fr]">
+      <section class="glass-panel rounded-2xl p-4 md:p-5">
+        <div class="mb-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-200 md:text-base">Live Timeline</h2>
+          <div class="flex flex-wrap items-center gap-2">
+            <div id="timelineFilters" class="flex flex-wrap items-center gap-2">
+              <button data-filter="all" class="filter-btn active">All</button>
+              <button data-filter="task" class="filter-btn">Task</button>
+              <button data-filter="result" class="filter-btn">Result</button>
+              <button data-filter="revision_request" class="filter-btn">Revision</button>
+            </div>
+            <label class="ml-1 inline-flex items-center gap-2 text-xs text-slate-300">
+              <input id="autoScrollToggle" type="checkbox" checked class="h-4 w-4 accent-cyan-300" />
+              Auto-scroll
+            </label>
+          </div>
+        </div>
+        <div id="timelineEmpty" class="rounded-xl border border-dashed border-white/20 bg-slate-900/20 p-6 text-center text-sm text-slate-300">
+          No events yet. Start a launch run to see the live conversation.
+        </div>
+        <div id="messageFeed" class="space-y-3"></div>
+      </section>
+
+      <section class="glass-panel rounded-2xl p-4 md:p-5">
+        <div class="mb-3">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-200 md:text-base">Outputs</h2>
+          <p class="mt-1 text-xs text-slate-300">Real platform results appear here as agents finish.</p>
+        </div>
+        <div id="outputs" class="space-y-3">
+          <div class="rounded-xl border border-dashed border-white/20 bg-slate-900/20 p-5 text-sm text-slate-300">
+            Waiting for PR, issue, and final summary.
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <template id="timelineItemTemplate">
+    <article class="timeline-item">
+      <div class="timeline-head">
+        <span class="event-badge"></span>
+        <span class="event-meta"></span>
+      </div>
+      <p class="event-title"></p>
+      <p class="event-details"></p>
+    </article>
+  </template>
+
+  <template id="outputCardTemplate">
+    <article class="output-card">
+      <p class="output-label"></p>
+      <div class="output-body"></div>
+    </article>
+  </template>
+
+  <!-- LLM Trace Modal -->
+  <div id="traceModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" id="traceModalBg"></div>
+    <div class="glass-panel relative z-10 w-full max-w-4xl max-h-[90vh] rounded-2xl flex flex-col overflow-hidden shadow-2xl shadow-cyan-900/20 border border-white/20">
+      <div class="flex items-center justify-between border-b border-white/10 px-6 py-4 bg-slate-900/40">
+        <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+          <span class="logo-orb w-4 h-4 mr-1"></span>
+          LLM Trace: <span id="traceAgentName" class="text-cyan-400 capitalize">Agent</span>
+        </h3>
+        <button id="closeTraceBtn" class="text-slate-400 hover:text-white transition rounded p-1 hover:bg-white/10">&times;</button>
+      </div>
+      
+      <div class="overflow-y-auto p-6 space-y-6 text-sm text-slate-300">
+        <!-- Model Info -->
+        <div class="flex items-center gap-3">
+          <span class="status-pill status-neutral font-mono text-xs">Provider: <span id="traceProvider" class="text-white"></span></span>
+          <span class="status-pill status-neutral font-mono text-xs">Model: <span id="traceModel" class="text-white"></span></span>
+        </div>
+
+        <!-- System Prompt -->
+        <div class="space-y-2">
+          <h4 class="font-semibold text-slate-200 uppercase tracking-widest text-xs">System Prompt</h4>
+          <div class="bg-slate-900/50 rounded-xl p-4 border border-white/5 font-mono text-xs leading-relaxed whitespace-pre-wrap text-emerald-300/80" id="traceSystemPrompt"></div>
+        </div>
+
+        <!-- User Prompt -->
+        <div class="space-y-2">
+          <h4 class="font-semibold text-slate-200 uppercase tracking-widest text-xs">User Prompt</h4>
+          <div class="bg-slate-900/50 rounded-xl p-4 border border-white/5 font-mono text-xs leading-relaxed whitespace-pre-wrap text-cyan-300/80" id="traceUserPrompt"></div>
+        </div>
+
+        <!-- Response -->
+        <div class="space-y-2">
+          <h4 class="font-semibold text-slate-200 uppercase tracking-widest text-xs">Model Response</h4>
+          <div class="bg-slate-900/50 rounded-xl p-4 border border-white/5 font-mono text-xs leading-relaxed whitespace-pre-wrap text-amber-200/80" id="traceResponse"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Sora", "ui-sans-serif", "system-ui"]
+          }
+        }
+      }
+    };
+  </script>
+  <script src="/frontend/app.js"></script>
+</body>
+</html>
