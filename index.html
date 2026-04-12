@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradTrack</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .hero {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 50px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 50px;
+        }
+        .feature {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: calc(33.33% - 40px);
+        }
+        .feature h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .feature p {
+            font-size: 16px;
+            color: #666;
+        }
+        .footer {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            clear: both;
+        }
+        .footer button {
+            background-color: #fff;
+            color: #4CAF50;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .footer button:hover {
+            background-color: #ccc;
+        }
+        @media only screen and (max-width: 768px) {
+            .feature {
+                width: calc(50% - 40px);
+            }
+        }
+        @media only screen and (max-width: 480px) {
+            .feature {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>GradTrack is an AI-powered job application tracker that helps final-year university students streamline their job search and increase their chances of landing their dream jobs.</h1>
+    </div>
+    <div class="features">
+        <div class="feature">
+            <h2>AI-powered Job Matching</h2>
+            <p>Utilizes machine learning algorithms to match students with job openings based on their skills, interests, and career goals.</p>
+        </div>
+        <div class="feature">
+            <h2>Job Application Tracker</h2>
+            <p>Allows students to track the status of their job applications and receive reminders for follow-ups and deadlines.</p>
+        </div>
+        <div class="feature">
+            <h2>Career Counseling and Feedback</h2>
+            <p>Provides students with personalized career guidance, resume and cover letter review, and interview preparation support.</p>
+        </div>
+    </div>
+    <div class="footer">
+        <button>Get Started with GradTrack Today!</button>
+    </div>
+</body>
+</html>
