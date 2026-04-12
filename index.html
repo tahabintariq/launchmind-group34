@@ -9,12 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            background-color: #f7f7f7;
         }
         .hero {
             background-color: #4CAF50;
@@ -24,72 +19,72 @@
         }
         .hero h1 {
             font-size: 36px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         .features {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 50px;
+            padding: 50px;
         }
         .feature {
             background-color: #fff;
             padding: 20px;
             margin: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             width: calc(33.33% - 40px);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .feature h2 {
             font-size: 24px;
             margin-bottom: 10px;
         }
         .feature p {
-            font-size: 16px;
-            color: #666;
+            font-size: 18px;
+            margin-bottom: 20px;
         }
         .footer {
             background-color: #4CAF50;
             color: #fff;
             padding: 20px;
             text-align: center;
-            margin-top: 50px;
+            clear: both;
         }
-        .btn {
+        .footer button {
             background-color: #fff;
             color: #4CAF50;
             border: none;
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
         }
-        .btn:hover {
+        .footer button:hover {
             background-color: #ccc;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <h1>GradTrack is an AI-powered job application tracker that streamlines the job search process for final-year university students by providing personalized job recommendations and application tracking.</h1>
+    <div class="hero">
+        <h1>GradTrack is an AI-powered job application tracker that streamlines the job search process for final-year university students by providing personalized job recommendations and application tracking.</h1>
+        <p>Discover how GradTrack can help you find your dream job</p>
+    </div>
+    <div class="features">
+        <div class="feature">
+            <h2>AI-powered Job Matching</h2>
+            <p>Our machine learning algorithms match you with job openings based on your skills, interests, and preferences, increasing your chances of finding a job that matches your career goals.</p>
         </div>
-        <div class="features">
-            <div class="feature">
-                <h2>AI-powered Job Matching</h2>
-                <p>Uses machine learning algorithms to match users with job openings based on their skills, interests, and preferences.</p>
-            </div>
-            <div class="feature">
-                <h2>Job Application Tracker</h2>
-                <p>Allows users to track the status of their job applications and receive reminders for follow-ups and deadlines.</p>
-            </div>
-            <div class="feature">
-                <h2>Resume and Cover Letter Builder</h2>
-                <p>Provides templates and guidance for users to create tailored resumes and cover letters for specific job openings.</p>
-            </div>
+        <div class="feature">
+            <h2>Job Application Tracker</h2>
+            <p>Track the status of your job applications and receive reminders for follow-ups and deadlines, ensuring you stay organized and don't miss any important deadlines.</p>
         </div>
-        <div class="footer">
-            <p>Ready to streamline your job search? Sign up for GradTrack today!</p>
-            <button class="btn">Get Started</button>
+        <div class="feature">
+            <h2>Resume and Cover Letter Builder</h2>
+            <p>Get tailored resumes and cover letters for specific job openings with our templates and guidance, helping you stand out from the competition and increase your chances of getting hired.</p>
         </div>
+    </div>
+    <div class="footer">
+        <button>Get Started with GradTrack Today!</button>
     </div>
 </body>
 </html>
