@@ -9,12 +9,12 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
+            background-color: #f9f9f9;
         }
         .hero {
             background-color: #4CAF50;
             color: #fff;
-            padding: 50px;
+            padding: 100px;
             text-align: center;
         }
         .hero h1 {
@@ -40,10 +40,6 @@
             font-size: 24px;
             margin-bottom: 10px;
         }
-        .feature p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
         .footer {
             background-color: #4CAF50;
             color: #fff;
@@ -62,29 +58,175 @@
         .footer button:hover {
             background-color: #ccc;
         }
+        /* AI-powered job matching implementation */
+        #job-matching-form {
+            display: none;
+        }
+        #job-matching-form input[type="text"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+        #job-matching-form button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        /* Job application tracker implementation */
+        #job-tracker-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #job-tracker-table th, #job-tracker-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        #job-tracker-table th {
+            background-color: #f0f0f0;
+        }
+        /* Resume and cover letter builder implementation */
+        #resume-builder-form {
+            display: none;
+        }
+        #resume-builder-form input[type="text"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+        #resume-builder-form textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+        #resume-builder-form button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="hero">
         <h1>GradTrack is an AI-powered job application tracker that streamlines the job search process for final-year university students by providing personalized job recommendations and application tracking.</h1>
-        <p>Discover how GradTrack can help you find your dream job</p>
     </div>
     <div class="features">
         <div class="feature">
             <h2>AI-powered Job Matching</h2>
-            <p>Our machine learning algorithms match you with job openings based on your skills, interests, and preferences, increasing your chances of finding a job that matches your career goals.</p>
+            <p>Uses machine learning algorithms to match users with job openings based on their skills, interests, and preferences.</p>
+            <form id="job-matching-form">
+                <input type="text" placeholder="Enter your skills" />
+                <input type="text" placeholder="Enter your interests" />
+                <input type="text" placeholder="Enter your preferences" />
+                <button type="submit">Get Job Recommendations</button>
+            </form>
         </div>
         <div class="feature">
             <h2>Job Application Tracker</h2>
-            <p>Track the status of your job applications and receive reminders for follow-ups and deadlines, ensuring you stay organized and don't miss any important deadlines.</p>
+            <p>Allows users to track the status of their job applications and receive reminders for follow-ups and deadlines.</p>
+            <table id="job-tracker-table">
+                <tr>
+                    <th>Job Title</th>
+                    <th>Company</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Software Engineer</td>
+                    <td>Google</td>
+                    <td>Pending</td>
+                </tr>
+                <tr>
+                    <td>Data Scientist</td>
+                    <td>Microsoft</td>
+                    <td>Interview Scheduled</td>
+                </tr>
+            </table>
         </div>
         <div class="feature">
             <h2>Resume and Cover Letter Builder</h2>
-            <p>Get tailored resumes and cover letters for specific job openings with our templates and guidance, helping you stand out from the competition and increase your chances of getting hired.</p>
+            <p>Provides templates and guidance for users to create tailored resumes and cover letters for specific job openings.</p>
+            <form id="resume-builder-form">
+                <input type="text" placeholder="Enter your name" />
+                <input type="text" placeholder="Enter your contact information" />
+                <textarea placeholder="Enter your work experience"></textarea>
+                <button type="submit">Generate Resume and Cover Letter</button>
+            </form>
         </div>
     </div>
     <div class="footer">
-        <button>Get Started with GradTrack Today!</button>
+        <button>Get Started with GradTrack</button>
     </div>
+    <script>
+        // AI-powered job matching implementation
+        const jobMatchingForm = document.getElementById('job-matching-form');
+        jobMatchingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const skills = document.querySelector('#job-matching-form input[type="text"]:nth-child(1)').value;
+            const interests = document.querySelector('#job-matching-form input[type="text"]:nth-child(2)').value;
+            const preferences = document.querySelector('#job-matching-form input[type="text"]:nth-child(3)').value;
+            // Call AI algorithm to get job recommendations
+            const jobRecommendations = getJobRecommendations(skills, interests, preferences);
+            // Display job recommendations
+            displayJobRecommendations(jobRecommendations);
+        });
+        // Job application tracker implementation
+        const jobTrackerTable = document.getElementById('job-tracker-table');
+        // Add event listener to update job status
+        jobTrackerTable.addEventListener('click', (e) => {
+            if (e.target.tagName === 'TD') {
+                const jobTitle = e.target.parentNode.cells[0].textContent;
+                const company = e.target.parentNode.cells[1].textContent;
+                const status = e.target.parentNode.cells[2].textContent;
+                // Update job status
+                updateJobStatus(jobTitle, company, status);
+            }
+        });
+        // Resume and cover letter builder implementation
+        const resumeBuilderForm = document.getElementById('resume-builder-form');
+        resumeBuilderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.querySelector('#resume-builder-form input[type="text"]:nth-child(1)').value;
+            const contactInformation = document.querySelector('#resume-builder-form input[type="text"]:nth-child(2)').value;
+            const workExperience = document.querySelector('#resume-builder-form textarea').value;
+            // Generate resume and cover letter
+            const resumeAndCoverLetter = generateResumeAndCoverLetter(name, contactInformation, workExperience);
+            // Display resume and cover letter
+            displayResumeAndCoverLetter(resumeAndCoverLetter);
+        });
+        // Functions to implement AI-powered job matching, job application tracker, and resume and cover letter builder
+        function getJobRecommendations(skills, interests, preferences) {
+            // Call AI algorithm to get job recommendations
+            // For demonstration purposes, return a sample job recommendation
+            return {
+                jobTitle: 'Software Engineer',
+                company: 'Google',
+                description: 'Design, develop, and test software applications'
+            };
+        }
+        function displayJobRecommendations(jobRecommendations) {
+            // Display job recommendations
+            console.log(jobRecommendations);
+        }
+        function updateJobStatus(jobTitle, company, status) {
+            // Update job status
+            console.log(`Updated job status for ${jobTitle} at ${company} to ${status}`);
+        }
+        function generateResumeAndCoverLetter(name, contactInformation, workExperience) {
+            // Generate resume and cover letter
+            // For demonstration purposes, return a sample resume and cover letter
+            return {
+                resume: `Name: ${name}\nContact Information: ${contactInformation}\nWork Experience: ${workExperience}`,
+                coverLetter: `Dear Hiring Manager,\nI am excited to apply for the Software Engineer position at Google.\nSincerely,\n${name}`
+            };
+        }
+        function displayResumeAndCoverLetter(resumeAndCoverLetter) {
+            // Display resume and cover letter
+            console.log(resumeAndCoverLetter);
+        }
+    </script>
 </body>
 </html>
