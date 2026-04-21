@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradTrack</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .hero {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 50px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 50px;
+        }
+        .feature {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: calc(33.33% - 40px);
+        }
+        .feature h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .feature p {
+            font-size: 18px;
+            color: #666666;
+        }
+        .footer {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            clear: both;
+        }
+        .footer button {
+            background-color: #ffffff;
+            color: #3498db;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .footer button:hover {
+            background-color: #cccccc;
+        }
+        @media only screen and (max-width: 768px) {
+            .feature {
+                width: calc(50% - 40px);
+            }
+        }
+        @media only screen and (max-width: 480px) {
+            .feature {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>GradTrack is an AI-powered job application tracker that streamlines the job search process for final-year university students, providing personalized job recommendations and application tracking to increase their chances of landing their dream job.</h1>
+    </div>
+    <div class="features">
+        <div class="feature">
+            <h2>Job Application Tracker</h2>
+            <p>Track the status of your job applications in one place, and stay organized with our intuitive dashboard. Receive notifications and updates on new job openings and application deadlines, so you can stay on top of your job search and never miss an opportunity.</p>
+        </div>
+        <div class="feature">
+            <h2>AI-powered Job Matching</h2>
+            <p>Get personalized job recommendations based on your skills and interests, and focus on applying to jobs that are a good fit for you. Our AI-powered algorithm ensures that you receive relevant job suggestions, increasing your chances of landing your dream job.</p>
+        </div>
+        <div class="feature">
+            <h2>Resume and Cover Letter Builder</h2>
+            <p>Create a professional resume and cover letter with our easy-to-use builder tool. Get tips and suggestions from our AI-powered algorithm to improve your application materials and increase your chances of getting noticed by potential employers.</p>
+        </div>
+        <div class="feature">
+            <h2>Company Research and Review</h2>
+            <p>Research and review companies to find the best fit for your skills and interests. Our platform provides you with detailed information about companies, including their mission, values, and culture, so you can make informed decisions about your job search.</p>
+        </div>
+        <div class="feature">
+            <h2>Interview Preparation Tools</h2>
+            <p>Prepare for your interviews with our comprehensive tools and resources. Get tips and suggestions on common interview questions, practice your responses with our interactive simulator, and increase your confidence and chances of acing your interviews.</p>
+        </div>
+    </div>
+    <div class="footer">
+        <button onclick="window.location.href='https://www.gradtrack.com/register';">Get Started with GradTrack Today!</button>
+    </div>
+</body>
+</html>
