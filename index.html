@@ -11,11 +11,6 @@
             padding: 0;
             background-color: #f7f7f7;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
         .hero {
             background-color: #4CAF50;
             color: #fff;
@@ -24,23 +19,30 @@
         }
         .hero h1 {
             font-size: 36px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         .features {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            padding: 50px;
         }
         .feature {
             background-color: #fff;
             padding: 20px;
             margin: 20px;
-            width: calc(33.33% - 40px);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         .feature h2 {
             font-size: 24px;
             margin-bottom: 10px;
+        }
+        .feature p {
+            font-size: 18px;
+            color: #666;
         }
         .footer {
             background-color: #4CAF50;
@@ -60,40 +62,41 @@
         .footer button:hover {
             background-color: #ccc;
         }
-        @media only screen and (max-width: 768px) {
-            .feature {
-                width: calc(50% - 40px);
-            }
+        .call-to-action {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 20px;
         }
-        @media only screen and (max-width: 480px) {
-            .feature {
-                width: 100%;
-            }
+        .call-to-action:hover {
+            background-color: #3e8e41;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <h1>GradTrack is an AI-powered job application tracker that streamlines the job search process for final-year university students, providing personalized job recommendations and application tracking to increase their chances of landing their dream job.</h1>
+    <div class="hero">
+        <h1>GradTrack is an AI-powered job application tracker that streamlines the job search process for final-year university students, providing personalized job recommendations and application tracking to increase their chances of landing their dream job.</h1>
+        <button class="call-to-action" onclick="window.location.href='register.html'">Get Started with GradTrack Today!</button>
+    </div>
+    <div class="features">
+        <div class="feature">
+            <h2>Job Application Tracker</h2>
+            <p>Track the status of your job applications in one place, and stay organized with our intuitive dashboard.</p>
         </div>
-        <div class="features">
-            <div class="feature">
-                <h2>Job Application Tracker</h2>
-                <p>Stay organized and focused on your job search with our intuitive application tracker. Easily monitor the status of your applications and follow up on pending ones.</p>
-            </div>
-            <div class="feature">
-                <h2>AI-powered Job Matching</h2>
-                <p>Get personalized job recommendations based on your skills, interests, and preferences. Our AI-powered matching algorithm ensures you're applying to jobs that are a great fit for you.</p>
-            </div>
-            <div class="feature">
-                <h2>Resume and Cover Letter Builder</h2>
-                <p>Create a professional resume and cover letter with our easy-to-use builder. Get tips and suggestions to help you stand out from the competition and increase your chances of landing an interview.</p>
-            </div>
+        <div class="feature">
+            <h2>AI-powered Job Matching</h2>
+            <p>Receive personalized job recommendations based on your skills and interests, and increase your chances of landing your dream job.</p>
         </div>
-        <div class="footer">
-            <button>Get Started with GradTrack Today!</button>
+        <div class="feature">
+            <h2>Resume and Cover Letter Builder</h2>
+            <p>Get help building a strong resume and cover letter, tailored to your skills and experience, and make a great impression on potential employers.</p>
         </div>
+    </div>
+    <div class="footer">
+        <p>Ready to streamline your job search? <button onclick="window.location.href='register.html'">Get Started with GradTrack Today!</button></p>
     </div>
 </body>
 </html>
